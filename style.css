@@ -9,11 +9,10 @@
   /* Color */
   --color-main:     #1F4E4D; /* Deep Clinical Teal — headings, links, key UI */
   --color-text:      #1B1B1B; /* near-black, warm — body text */
-  --color-bg:        #EFE7D6; /* warm deep cream — page background, replaces the flatter FAFAF7 */
+  --color-bg:        #FAFAF7; /* near-white, warm — page background, cards */
   --color-accent:    #C9A227; /* Muted Gold — ONE thing at a time, never a fill */
   --color-divider:   #E4E0D8; /* warm grey — borders, dividers */
-  --color-bg-raised: #FFFFFF; /* white surface for cards — now contrasts against the deeper page bg for natural lift */
-  --shadow-card: 0 4px 16px rgba(31, 78, 77, 0.10); /* soft teal-tinted lift, replaces flat borders on cards */
+  --color-bg-raised: #FFFFFF; /* slightly lifted surface for cards on --color-bg */
 
   /* Type */
   --font-heading: 'Newsreader', Georgia, serif;
@@ -230,7 +229,7 @@ p {
    ========================================================= */
 .card {
   background: var(--color-bg-raised);
-  box-shadow: var(--shadow-card);
+  border: 1px solid var(--color-divider);
   border-radius: var(--radius);
   padding: var(--space-3);
   display: flex;
@@ -296,7 +295,47 @@ p {
 }
 
 /* =========================================================
-   9. GRID
+   9. PROJECT TRACKS
+   Each track pairs its "what/why" with the actual proof —
+   context on the left, the live card on the right. Keeps the
+   homepage from saying the same thing twice.
+   ========================================================= */
+.section-intro {
+  color: #4A4A47;
+  max-width: 60ch;
+  margin-bottom: var(--space-4);
+}
+
+.track {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: var(--space-4);
+  align-items: start;
+  padding: var(--space-3) 0;
+}
+
+.track-header h3 {
+  color: var(--color-main);
+}
+
+.track-header p {
+  color: #4A4A47;
+  font-size: 0.95rem;
+}
+
+.track-divider {
+  border: none;
+  border-top: 1px solid var(--color-divider);
+}
+
+@media (max-width: 800px) {
+  .track {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =========================================================
+   10. GRID
    ========================================================= */
 .grid-3 {
   display: grid;
@@ -313,14 +352,6 @@ p {
 /* =========================================================
    10. HERO
    ========================================================= */
-.hero-wrap {
-  background-color: var(--color-bg);
-  background-image: url('../images/hero-texture.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
 .hero {
   padding: var(--space-6) 0 var(--space-5);
   text-align: left;
