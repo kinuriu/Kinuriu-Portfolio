@@ -9,11 +9,12 @@
 - [x] Home page (`index.html`) — hero (now with subtle entrance motion), projects preview, about preview
 - [x] Projects page (`projects.html`) — one page, three sections: AI Fluency (two live case studies), Data Analysis (in progress), UI/UX (in progress)
 - [x] Contact page (`contact.html`) — rebuilt with matching nav; content unchanged (booking link, email, LinkedIn, GitHub)
+- [x] About page (`about.html`) — bio, stat strip, Experience (FlyRank first, then condensed Clinical Officer history across 3 postings), Certifications (11 Anthropic Academy certs + AWS AI Practitioner + degree, with 2 in-progress certs listed separately and honestly)
 - [ ] **`ai-fluency.html` is now superseded** — its content lives in `projects.html#ai-fluency`. Delete it from the repo when you push, so there's no duplicate/orphaned page.
 
 ## Next (one at a time, no rush)
 - [ ] CV file — needed for the "Download CV" nav link and for the FlyRank capstone deliverable checklist
-- [ ] About page (`about.html`) — I don't have this file's source, only rendered text from a live fetch, so I haven't touched it. Send me the file (or its content) and I'll match the new nav + can add a short stat strip (Licensed Clinical Officer / FlyRank AI Intern / 2 live automations / Nairobi) like we discussed
+- [ ] Your real photo for the About page (currently text-only)
 - [ ] Data Analysis section — waiting on QuickSight screenshots
 - [ ] UI/UX section — waiting on Figma captures
 - [ ] Push all updated files live (redeploy — current live site is out of date)

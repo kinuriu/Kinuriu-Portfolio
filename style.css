@@ -408,6 +408,128 @@ p {
 }
 
 /* =========================================================
+   9c. ABOUT PAGE: STATS, EXPERIENCE, CERTIFICATIONS
+   ========================================================= */
+.stat-strip {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: var(--space-3);
+  padding-bottom: var(--space-4);
+}
+
+.stat-value {
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  color: var(--color-main);
+  margin-bottom: 0.2rem;
+}
+
+.stat-label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #8A8478;
+}
+
+@media (max-width: 900px) {
+  .stat-strip {
+    grid-template-columns: repeat(3, 1fr);
+    row-gap: var(--space-3);
+  }
+}
+
+@media (max-width: 560px) {
+  .stat-strip {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.exp-item {
+  margin-bottom: var(--space-4);
+}
+
+.exp-item:last-child {
+  margin-bottom: 0;
+}
+
+.exp-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+  margin-bottom: var(--space-1);
+}
+
+.exp-role {
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.exp-org {
+  font-size: 0.9rem;
+  color: var(--color-main);
+}
+
+.exp-dates {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: #8A8478;
+  white-space: nowrap;
+}
+
+.exp-item p {
+  color: #4A4A47;
+  font-size: 0.95rem;
+}
+
+.exp-postings {
+  margin-top: var(--space-2);
+  padding-left: var(--space-2);
+  font-size: 0.85rem;
+  color: #4A4A47;
+}
+
+.exp-postings li {
+  list-style: disc;
+  margin-bottom: 0.35rem;
+}
+
+.cert-list {
+  margin-top: var(--space-1);
+}
+
+.cert-list li {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-2);
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--color-divider);
+  font-size: 0.9rem;
+}
+
+.cert-list li span:last-child {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: #8A8478;
+  white-space: nowrap;
+}
+
+.cert-more {
+  font-size: 0.85rem;
+  color: #8A8478;
+  margin-top: var(--space-2);
+}
+
+.cert-pending {
+  font-size: 0.85rem;
+  color: #8A8478;
+  font-style: italic;
+  margin-top: var(--space-3);
+}
+
+/* =========================================================
    10. GRID
    ========================================================= */
 .grid-3 {
