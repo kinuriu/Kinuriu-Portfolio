@@ -185,6 +185,11 @@ p {
   height: 18px;
 }
 
+.nav-cv {
+  padding: 0.4rem 0.9rem;
+  font-size: 0.85rem;
+}
+
 .wordmark {
   font-family: var(--font-heading);
   font-weight: 500;
