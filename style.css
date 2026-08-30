@@ -156,6 +156,35 @@ p {
   gap: var(--space-2);
 }
 
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.nav-social {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.nav-social a {
+  color: var(--color-main);
+  display: inline-flex;
+  transition: color 0.15s ease;
+}
+
+.nav-social a:hover,
+.nav-social a:focus-visible {
+  color: var(--color-accent);
+}
+
+.nav-social svg {
+  width: 18px;
+  height: 18px;
+}
+
 .wordmark {
   font-family: var(--font-heading);
   font-weight: 500;
@@ -328,8 +357,52 @@ p {
   border-top: 1px solid var(--color-divider);
 }
 
+.track-cards {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.track-cards .card {
+  height: auto;
+}
+
 @media (max-width: 800px) {
   .track {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =========================================================
+   9b. CASE STUDY BLOCKS
+   Used on individual project pages (e.g. ai-fluency.html) to
+   break a case study into scannable problem/approach/outcome
+   chunks instead of one long paragraph.
+   ========================================================= */
+.case-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3);
+  margin: var(--space-3) 0 var(--space-3);
+}
+
+.case-block h3 {
+  font-size: 1.05rem;
+}
+
+.case-block p {
+  color: #4A4A47;
+  font-size: 0.95rem;
+}
+
+.case-stack {
+  font-size: 0.9rem;
+  color: #4A4A47;
+  margin-bottom: var(--space-3);
+}
+
+@media (max-width: 800px) {
+  .case-grid {
     grid-template-columns: 1fr;
   }
 }
@@ -377,6 +450,31 @@ p {
   gap: var(--space-2);
   flex-wrap: wrap;
 }
+
+/* Subtle entrance motion — the site-wide prefers-reduced-motion
+   rule in section 2 already disables all animation for anyone
+   who's asked for less, so this needs no separate fallback. */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.hero .kicker,
+.hero h1,
+.hero p,
+.hero-cta {
+  animation: fade-up 0.7s ease both;
+}
+
+.hero h1   { animation-delay: 0.08s; }
+.hero p    { animation-delay: 0.18s; }
+.hero-cta  { animation-delay: 0.28s; }
 
 /* =========================================================
    11. FOOTER

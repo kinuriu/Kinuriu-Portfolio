@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects — Sheila Kinuriu</title>
+  <meta name="description" content="Three tracks — AI Fluency, Data Analysis, and UI/UX Design — one throughline: healthcare operations, proven with real builds.">
+
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <nav class="nav container">
+      <a href="index.html" class="wordmark">Sheila Kinuriu</a>
+      <div class="nav-right">
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="projects.html" aria-current="page">Projects</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="nav-social">
+          <a href="https://github.com/kinuriu" aria-label="GitHub" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/in/sheilanduta/" aria-label="LinkedIn" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 10v7M7 7v.01M12 17v-4.5a2.5 2.5 0 0 1 5 0V17M12 10v7"/></svg>
+          </a>
+          <a href="mailto:sheilakinuriu@gmail.com" aria-label="Email">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+          </a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ============ INTRO ============ -->
+    <section class="hero container">
+      <p class="kicker">Projects</p>
+      <h1>Three tracks, one throughline</h1>
+      <p>Ask what's true, design for the person using it, and use AI to move faster without losing the judgment part. Each track below is a real build — some finished, some still in progress, all honestly labeled.</p>
+    </section>
+
+    <hr class="section-divider container">
+
+    <!-- ============ AI FLUENCY ============ -->
+    <section class="section container" id="ai-fluency">
+      <span class="kicker">Track 01</span>
+      <h2>AI Fluency</h2>
+      <p class="section-intro">Using AI as a tool with judgment: two automations, each built around a task I've handled manually myself in a clinical setting.</p>
+
+      <div class="track-case" id="no-show-predictor">
+        <span class="status status-live">Live</span>
+        <h3>Patient No-Show Risk Predictor</h3>
+        <p class="section-intro">An AI-powered automation that scores each patient's no-show risk and logs a plain-language reason and suggested intervention — built entirely no-code on Make.com.</p>
+
+        <div class="case-grid">
+          <div class="case-block">
+            <h4>The problem</h4>
+            <p>No-shows are a quiet cost in most clinics: lost slots, wasted prep time, and no consistent way to flag who's actually at risk before the day of the appointment.</p>
+          </div>
+          <div class="case-block">
+            <h4>What it does</h4>
+            <p>Pulls appointment and patient data from Google Sheets, sends it to Claude (via OpenRouter) for risk analysis, and logs the result to Notion for clinical review.</p>
+          </div>
+          <div class="case-block">
+            <h4>Input signals</h4>
+            <p>Age, days between scheduling and appointment, SMS reminder status, prior no-show history, and health factors (diabetes, hypertension, alcoholism, handicap access needs).</p>
+          </div>
+          <div class="case-block">
+            <h4>Output</h4>
+            <p>A Risk Score (High / Medium / Low), a one-sentence Risk Reason, and a one-sentence Suggested Action — plain language a front-desk coordinator can act on immediately.</p>
+          </div>
+        </div>
+
+        <p class="case-stack"><strong>Stack:</strong> Make.com · Claude via OpenRouter · Google Sheets · Notion</p>
+        <a href="https://github.com/kinuriu/Patient-no-show-risk-predictor" class="btn btn-secondary" target="_blank" rel="noopener">View on GitHub →</a>
+      </div>
+
+      <hr class="track-divider">
+
+      <div class="track-case" id="rcm-automation">
+        <span class="status status-live">Live — 4 of 15 stages</span>
+        <h3>Patient Intake-to-Payment RCM Automation</h3>
+        <p class="section-intro">A self-hosted n8n workflow automating the front end of Revenue Cycle Management: intake, eligibility verification, referral verification, and prior authorization. Tested end to end on synthetic data — not a full RCM pipeline yet, and it isn't meant to be one yet.</p>
+
+        <div class="case-grid">
+          <div class="case-block">
+            <h4>The problem</h4>
+            <p>Intake, eligibility checks, referral verification, and prior authorization are usually four separate manual tasks with no shared record of what was checked, when, or by whom.</p>
+          </div>
+          <div class="case-block">
+            <h4>What it does</h4>
+            <p>Receives intake data, masks PHI before logging, checks eligibility against a mock insurance API, and routes each patient: auto-approved, flagged for manual review, or logged as an error.</p>
+          </div>
+          <div class="case-block">
+            <h4>Scope, honestly</h4>
+            <p>Covers stages 1–4 of a 15-stage revenue cycle. Scheduling, claims, adjudication, and billing are documented as planned future work, not built. Synthetic data only, never real PHI.</p>
+          </div>
+          <div class="case-block">
+            <h4>What's tested</h4>
+            <p>Eligibility-based routing, the auto-approve / manual-review split, error handling on a failed API call, and referral/authorization routing across all four combinations.</p>
+          </div>
+        </div>
+
+        <p class="case-stack"><strong>Stack:</strong> n8n (self-hosted, Docker) · PostgreSQL · Redis · MinIO · a mock insurance API</p>
+        <a href="https://github.com/kinuriu/Patient-Intake-to-Payment-RCM-Demo" class="btn btn-secondary" target="_blank" rel="noopener">View on GitHub →</a>
+      </div>
+    </section>
+
+    <hr class="section-divider container">
+
+    <!-- ============ DATA ANALYSIS ============ -->
+    <section class="section container" id="data-analysis">
+      <span class="kicker">Track 02</span>
+      <span class="status status-progress">In progress</span>
+      <h2>Data Analysis</h2>
+      <p class="section-intro">Turning raw numbers into dashboards someone can actually act on — built in Amazon QuickSight.</p>
+      <div class="case-block">
+        <h4>Where this stands</h4>
+        <p>The dashboard build is underway in QuickSight. This section will get a full case study — the question it answers, the data model behind it, and the decisions it's meant to support — once the dashboard and screenshots are ready.</p>
+      </div>
+    </section>
+
+    <hr class="section-divider container">
+
+    <!-- ============ UI/UX DESIGN ============ -->
+    <section class="section container" id="ui-ux">
+      <span class="kicker">Track 03</span>
+      <span class="status status-progress">In progress</span>
+      <h2>UI/UX Design</h2>
+      <p class="section-intro">Research-first design work — personas, flows, and journey maps — starting with Mindful Moments.</p>
+      <div class="case-block">
+        <h4>Where this stands</h4>
+        <p>Personas and the journey map are in place in Figma; screens are next. This section will expand into a full case study — research, flows, and final screens — as that work is captured.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-links">
+        <a href="https://www.linkedin.com/in/sheilanduta/">LinkedIn</a>
+        <a href="https://github.com/kinuriu">GitHub</a>
+        <a href="mailto:sheilakinuriu@gmail.com">Email</a>
+      </div>
+      <span class="footer-note">© 2026 Sheila Kinuriu</span>
+    </div>
+  </footer>
+
+</body>
+</html>
