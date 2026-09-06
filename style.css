@@ -675,6 +675,10 @@ p {
   position: relative;
   margin: 0 auto;
   max-width: 340px;
+  padding: 28px;
+  border-radius: 24px;
+  background: radial-gradient(circle at 50% 40%, rgba(31, 78, 77, 0.08), rgba(31, 78, 77, 0.02) 70%);
+  transition: background 0.4s ease;
 }
 
 .hero-card {
@@ -708,6 +712,8 @@ p {
   width: 100%;
   height: auto;
   padding: 8px 0 16px;
+  transform-origin: center;
+  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 /* Default state: fully visible. This is the safe fallback for
@@ -723,7 +729,7 @@ p {
 .hn-line {
   stroke: var(--color-main);
   stroke-width: 1.5;
-  opacity: 0.45;
+  opacity: 0.4;
 }
 
 .hero-tag {
@@ -739,24 +745,24 @@ p {
 }
 
 .tag-tl {
-  top: -14px;
-  left: -12px;
+  top: 4px;
+  left: 4px;
   transform: rotate(-6deg);
   background: var(--color-main);
   color: var(--color-bg);
 }
 
 .tag-tr {
-  top: 18px;
-  right: -22px;
+  top: 36px;
+  right: 4px;
   transform: rotate(5deg);
   background: var(--color-accent);
   color: var(--color-main);
 }
 
 .tag-bl {
-  bottom: 18px;
-  left: -22px;
+  bottom: 36px;
+  left: 4px;
   transform: rotate(4deg);
   background: var(--color-bg-raised);
   color: var(--color-main);
@@ -764,11 +770,20 @@ p {
 }
 
 .tag-br {
-  bottom: -14px;
-  right: -10px;
+  bottom: 4px;
+  right: 4px;
   transform: rotate(-5deg);
   background: var(--color-main);
   color: var(--color-bg);
+}
+
+.hero-card-hint {
+  display: none;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: #8A8478;
+  text-align: center;
+  margin-top: var(--space-2);
 }
 
 .hero-card-caption {
@@ -777,14 +792,19 @@ p {
   color: var(--color-text);
   font-size: 1.05rem;
   max-width: 32ch;
-  margin: var(--space-4) auto 0;
+  margin: var(--space-3) auto 0;
   text-align: center;
 }
 
 /* Collapse-then-reveal-on-hover only applies where hover is a real,
    precise pointer interaction. Touch devices never get a collapsed
-   state, since they'd have no way to trigger the reveal. */
+   state (network, tags all stay visible by default above), since
+   they'd have no way to trigger the reveal at all. */
 @media (hover: hover) and (pointer: fine) {
+  .hero-card-hint {
+    display: block;
+  }
+
   .hn-node {
     opacity: 0;
     transform: translate(var(--tx, 0), var(--ty, 0));
@@ -801,6 +821,25 @@ p {
     transition: stroke-dashoffset 0.6s ease;
   }
 
+  .hero-tag {
+    opacity: 0;
+    transform: translateY(8px) scale(0.92);
+    transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+
+  .tag-tl { transition-delay: 0.15s; }
+  .tag-tr { transition-delay: 0.25s; }
+  .tag-bl { transition-delay: 0.3s; }
+  .tag-br { transition-delay: 0.4s; }
+
+  .hero-card-wrap:hover {
+    background: radial-gradient(circle at 50% 40%, rgba(31, 78, 77, 0.16), rgba(201, 162, 39, 0.05) 70%);
+  }
+
+  .hero-card-wrap:hover .hero-network {
+    transform: scale(1.14);
+  }
+
   .hero-card-wrap:hover .hn-node {
     opacity: 1;
     transform: translate(0, 0);
@@ -808,6 +847,11 @@ p {
 
   .hero-card-wrap:hover .hn-line {
     stroke-dashoffset: 0;
+  }
+
+  .hero-card-wrap:hover .hero-tag {
+    opacity: 1;
+    transform: translateY(0) scale(1);
   }
 }
 
