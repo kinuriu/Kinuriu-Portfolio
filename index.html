@@ -62,26 +62,45 @@
         </div>
       </div>
 
-      <div class="hero-visual" id="heroVisual" aria-hidden="true">
-        <svg viewBox="0 0 320 260" class="hero-visual-svg">
-          <rect x="10" y="10" width="300" height="240" rx="18" fill="var(--color-bg-raised)" stroke="var(--color-divider)" stroke-width="1.5"/>
+      <div class="hero-card-outer">
+        <div class="hero-card-wrap">
+          <span class="hero-tag tag-tl">Live</span>
+          <span class="hero-tag tag-tr">2,000+ patients</span>
 
-          <!-- UI/UX: wireframe lines -->
-          <line x1="34" y1="38" x2="150" y2="38" stroke="var(--color-main)" stroke-width="3" stroke-linecap="round" opacity="0.45"/>
-          <line x1="34" y1="56" x2="108" y2="56" stroke="var(--color-main)" stroke-width="3" stroke-linecap="round" opacity="0.25"/>
+          <div class="hero-card">
+            <div class="hero-card-chrome">
+              <span class="chrome-dot"></span><span class="chrome-dot"></span><span class="chrome-dot"></span>
+            </div>
+            <svg class="hero-network" viewBox="0 0 300 220" aria-hidden="true">
+              <line class="hn-line" x1="150" y1="110" x2="70" y2="50"/>
+              <line class="hn-line" x1="150" y1="110" x2="110" y2="30"/>
+              <line class="hn-line" x1="150" y1="110" x2="170" y2="25"/>
+              <line class="hn-line" x1="150" y1="110" x2="225" y2="45"/>
+              <line class="hn-line" x1="150" y1="110" x2="245" y2="110"/>
+              <line class="hn-line" x1="150" y1="110" x2="215" y2="175"/>
+              <line class="hn-line" x1="150" y1="110" x2="150" y2="195"/>
+              <line class="hn-line" x1="150" y1="110" x2="85" y2="175"/>
+              <line class="hn-line" x1="150" y1="110" x2="55" y2="110"/>
 
-          <!-- Data Analysis: small ascending bar chart -->
-          <rect class="hv-bar" x="34" y="170" width="20" height="40" rx="2" fill="var(--color-main)" opacity="0.5"/>
-          <rect class="hv-bar" x="64" y="150" width="20" height="60" rx="2" fill="var(--color-main)" opacity="0.65" style="animation-delay:.15s"/>
-          <rect class="hv-bar" x="94" y="185" width="20" height="25" rx="2" fill="var(--color-main)" opacity="0.4" style="animation-delay:.3s"/>
-          <rect class="hv-bar" x="124" y="130" width="20" height="80" rx="2" fill="var(--color-accent)" style="animation-delay:.45s"/>
+              <circle class="hn-node" style="--tx:80px;--ty:60px" cx="70" cy="50" r="4"/>
+              <circle class="hn-node" style="--tx:40px;--ty:80px" cx="110" cy="30" r="4"/>
+              <circle class="hn-node" style="--tx:-20px;--ty:85px" cx="170" cy="25" r="4"/>
+              <circle class="hn-node" style="--tx:-75px;--ty:65px" cx="225" cy="45" r="4"/>
+              <circle class="hn-node" style="--tx:-95px;--ty:0px" cx="245" cy="110" r="4"/>
+              <circle class="hn-node" style="--tx:-65px;--ty:-65px" cx="215" cy="175" r="4"/>
+              <circle class="hn-node" style="--tx:0px;--ty:-85px" cx="150" cy="195" r="4"/>
+              <circle class="hn-node" style="--tx:65px;--ty:-65px" cx="85" cy="175" r="4"/>
+              <circle class="hn-node" style="--tx:95px;--ty:0px" cx="55" cy="110" r="4"/>
 
-          <!-- AI Fluency: pulsing connection flow -->
-          <path class="hv-flow-path" d="M190 80 Q 230 60 260 90 T 292 132" fill="none" stroke="var(--color-main)" stroke-width="2" stroke-dasharray="6 6"/>
-          <circle cx="190" cy="80" r="6" fill="var(--color-main)"/>
-          <circle cx="260" cy="90" r="6" fill="var(--color-main)"/>
-          <circle cx="292" cy="132" r="6" fill="var(--color-accent)"/>
-        </svg>
+              <circle class="hn-center" cx="150" cy="110" r="7"/>
+            </svg>
+          </div>
+
+          <span class="hero-tag tag-bl">n8n + Make.com</span>
+          <span class="hero-tag tag-br">Healthcare AI</span>
+        </div>
+
+        <p class="hero-card-caption">I automate real clinical workflows, from patient no-show prediction to revenue-cycle intake, built and shipped.</p>
       </div>
     </section>
 
@@ -166,28 +185,5 @@
     </div>
   </footer>
 
-  <script>
-    (function () {
-      var hero = document.querySelector('.hero');
-      var visual = document.getElementById('heroVisual');
-      if (!hero || !visual) return;
-
-      var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      if (reduceMotion) return;
-
-      hero.addEventListener('mousemove', function (e) {
-        var rect = hero.getBoundingClientRect();
-        var relX = (e.clientX - rect.left) / rect.width - 0.5;
-        var relY = (e.clientY - rect.top) / rect.height - 0.5;
-        var rotateY = relX * 12;
-        var rotateX = relY * -12;
-        visual.style.transform = 'rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg)';
-      });
-
-      hero.addEventListener('mouseleave', function () {
-        visual.style.transform = 'rotateX(0deg) rotateY(0deg)';
-      });
-    })();
-  </script>
 </body>
 </html>

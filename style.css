@@ -579,7 +579,7 @@ p {
 
 .hero.hero-split {
   display: grid;
-  grid-template-columns: 1.2fr 1fr;
+  grid-template-columns: 1.15fr 1fr;
   gap: var(--space-4);
   align-items: center;
 }
@@ -660,55 +660,164 @@ p {
   100% { opacity: 1; transform: scale(1); }
 }
 
-/* --- Hero visual: interactive dashboard illustration --- */
-.hero-visual {
-  perspective: 900px;
+@media (prefers-reduced-motion: reduce) {
+  .hero-line-path { stroke-dashoffset: 0 !important; }
+  .hero-dot { opacity: 1 !important; transform: scale(1) !important; }
+}
+
+/* --- Hero card: mockup + floating tags + hover-reveal network --- */
+.hero-card-outer {
   animation: fade-up 0.6s ease both;
   animation-delay: 0.35s;
 }
 
-.hero-visual-svg {
+.hero-card-wrap {
+  position: relative;
+  margin: 0 auto;
+  max-width: 340px;
+}
+
+.hero-card {
+  position: relative;
+  background: var(--color-bg-raised);
+  border: 1px solid var(--color-divider);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 24px 48px -24px rgba(31, 78, 77, 0.35);
+}
+
+.hero-card-chrome {
+  display: flex;
+  gap: 6px;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--color-divider);
+}
+
+.chrome-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-divider);
+}
+
+.chrome-dot:nth-child(2) { background: var(--color-accent); }
+.chrome-dot:nth-child(3) { background: var(--color-main); }
+
+.hero-network {
   display: block;
   width: 100%;
   height: auto;
-  transition: transform 0.15s ease-out;
-  will-change: transform;
+  padding: 8px 0 16px;
 }
 
-.hv-bar {
-  transform-box: fill-box;
-  transform-origin: bottom;
-  animation: hv-bar-grow 2.4s ease-in-out infinite alternate;
+/* Default state: fully visible. This is the safe fallback for
+   touch devices, which have no hover state to trigger a reveal. */
+.hn-node {
+  fill: var(--color-main);
 }
 
-@keyframes hv-bar-grow {
-  from { transform: scaleY(0.85); }
-  to   { transform: scaleY(1); }
+.hn-center {
+  fill: var(--color-accent);
 }
 
-.hv-flow-path {
-  animation: hv-dash 2.6s linear infinite;
+.hn-line {
+  stroke: var(--color-main);
+  stroke-width: 1.5;
+  opacity: 0.45;
 }
 
-@keyframes hv-dash {
-  to { stroke-dashoffset: -60; }
+.hero-tag {
+  position: absolute;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 0.4rem 0.8rem;
+  border-radius: 999px;
+  white-space: nowrap;
+  box-shadow: 0 8px 16px -6px rgba(31, 78, 77, 0.3);
+}
+
+.tag-tl {
+  top: -14px;
+  left: -12px;
+  transform: rotate(-6deg);
+  background: var(--color-main);
+  color: var(--color-bg);
+}
+
+.tag-tr {
+  top: 18px;
+  right: -22px;
+  transform: rotate(5deg);
+  background: var(--color-accent);
+  color: var(--color-main);
+}
+
+.tag-bl {
+  bottom: 18px;
+  left: -22px;
+  transform: rotate(4deg);
+  background: var(--color-bg-raised);
+  color: var(--color-main);
+  border: 1px solid var(--color-divider);
+}
+
+.tag-br {
+  bottom: -14px;
+  right: -10px;
+  transform: rotate(-5deg);
+  background: var(--color-main);
+  color: var(--color-bg);
+}
+
+.hero-card-caption {
+  font-family: var(--font-heading);
+  font-style: italic;
+  color: var(--color-text);
+  font-size: 1.05rem;
+  max-width: 32ch;
+  margin: var(--space-4) auto 0;
+  text-align: center;
+}
+
+/* Collapse-then-reveal-on-hover only applies where hover is a real,
+   precise pointer interaction. Touch devices never get a collapsed
+   state, since they'd have no way to trigger the reveal. */
+@media (hover: hover) and (pointer: fine) {
+  .hn-node {
+    opacity: 0;
+    transform: translate(var(--tx, 0), var(--ty, 0));
+    transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.5s ease;
+  }
+
+  .hn-center {
+    opacity: 1;
+  }
+
+  .hn-line {
+    stroke-dasharray: 240;
+    stroke-dashoffset: 240;
+    transition: stroke-dashoffset 0.6s ease;
+  }
+
+  .hero-card-wrap:hover .hn-node {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+
+  .hero-card-wrap:hover .hn-line {
+    stroke-dashoffset: 0;
+  }
 }
 
 @media (max-width: 900px) {
   .hero.hero-split {
     grid-template-columns: 1fr;
   }
-  .hero-visual {
-    max-width: 320px;
-    margin: var(--space-3) auto 0;
+  .hero-card-outer {
+    margin-top: var(--space-4);
   }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .hero-line-path { stroke-dashoffset: 0 !important; }
-  .hero-dot { opacity: 1 !important; transform: scale(1) !important; }
-  .hv-bar { animation: none !important; }
-  .hv-flow-path { animation: none !important; }
 }
 
 /* =========================================================
