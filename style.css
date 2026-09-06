@@ -577,6 +577,13 @@ p {
   text-align: left;
 }
 
+.hero.hero-split {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: var(--space-4);
+  align-items: center;
+}
+
 .hero .kicker {
   margin-bottom: var(--space-2);
 }
@@ -653,9 +660,55 @@ p {
   100% { opacity: 1; transform: scale(1); }
 }
 
+/* --- Hero visual: interactive dashboard illustration --- */
+.hero-visual {
+  perspective: 900px;
+  animation: fade-up 0.6s ease both;
+  animation-delay: 0.35s;
+}
+
+.hero-visual-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: transform 0.15s ease-out;
+  will-change: transform;
+}
+
+.hv-bar {
+  transform-box: fill-box;
+  transform-origin: bottom;
+  animation: hv-bar-grow 2.4s ease-in-out infinite alternate;
+}
+
+@keyframes hv-bar-grow {
+  from { transform: scaleY(0.85); }
+  to   { transform: scaleY(1); }
+}
+
+.hv-flow-path {
+  animation: hv-dash 2.6s linear infinite;
+}
+
+@keyframes hv-dash {
+  to { stroke-dashoffset: -60; }
+}
+
+@media (max-width: 900px) {
+  .hero.hero-split {
+    grid-template-columns: 1fr;
+  }
+  .hero-visual {
+    max-width: 320px;
+    margin: var(--space-3) auto 0;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .hero-line-path { stroke-dashoffset: 0 !important; }
   .hero-dot { opacity: 1 !important; transform: scale(1) !important; }
+  .hv-bar { animation: none !important; }
+  .hv-flow-path { animation: none !important; }
 }
 
 /* =========================================================

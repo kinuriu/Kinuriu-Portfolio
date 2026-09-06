@@ -46,18 +46,42 @@
   <main>
 
     <!-- ============ HERO ============ -->
-    <section class="hero container">
-      <p class="kicker">Product Analyst</p>
-      <h1>I design, analyze, and build with AI across data, UX, and automation.</h1>
-      <svg class="hero-line" viewBox="0 0 240 12" width="240" height="12" aria-hidden="true">
-        <line x1="4" y1="6" x2="230" y2="6" stroke="var(--color-main)" stroke-width="2" stroke-linecap="round" pathLength="100" class="hero-line-path"/>
-        <circle cx="230" cy="6" r="5" fill="var(--color-accent)" class="hero-dot"/>
-      </svg>
-      <p>Backed by 2,000+ patients treated as a Licensed Clinician, I bring the same discipline to data, design, and AI systems.</p>
-      <p>Three disciplines, one way of thinking: ask what's true, design for the person using it, and use AI to move faster without losing the judgment part.</p>
-      <div class="hero-cta">
-        <a href="#projects" class="btn btn-primary">View projects</a>
-        <a href="about.html" class="btn btn-secondary">About me</a>
+    <section class="hero hero-split container">
+      <div class="hero-text">
+        <p class="kicker">Product Analyst</p>
+        <h1>I design, analyze, and build with AI across data, UX, and automation.</h1>
+        <svg class="hero-line" viewBox="0 0 240 12" width="240" height="12" aria-hidden="true">
+          <line x1="4" y1="6" x2="230" y2="6" stroke="var(--color-main)" stroke-width="2" stroke-linecap="round" pathLength="100" class="hero-line-path"/>
+          <circle cx="230" cy="6" r="5" fill="var(--color-accent)" class="hero-dot"/>
+        </svg>
+        <p>Backed by 2,000+ patients treated as a Licensed Clinician, I bring the same discipline to data, design, and AI systems.</p>
+        <p>Three disciplines, one way of thinking: ask what's true, design for the person using it, and use AI to move faster without losing the judgment part.</p>
+        <div class="hero-cta">
+          <a href="#projects" class="btn btn-primary">View projects</a>
+          <a href="about.html" class="btn btn-secondary">About me</a>
+        </div>
+      </div>
+
+      <div class="hero-visual" id="heroVisual" aria-hidden="true">
+        <svg viewBox="0 0 320 260" class="hero-visual-svg">
+          <rect x="10" y="10" width="300" height="240" rx="18" fill="var(--color-bg-raised)" stroke="var(--color-divider)" stroke-width="1.5"/>
+
+          <!-- UI/UX: wireframe lines -->
+          <line x1="34" y1="38" x2="150" y2="38" stroke="var(--color-main)" stroke-width="3" stroke-linecap="round" opacity="0.45"/>
+          <line x1="34" y1="56" x2="108" y2="56" stroke="var(--color-main)" stroke-width="3" stroke-linecap="round" opacity="0.25"/>
+
+          <!-- Data Analysis: small ascending bar chart -->
+          <rect class="hv-bar" x="34" y="170" width="20" height="40" rx="2" fill="var(--color-main)" opacity="0.5"/>
+          <rect class="hv-bar" x="64" y="150" width="20" height="60" rx="2" fill="var(--color-main)" opacity="0.65" style="animation-delay:.15s"/>
+          <rect class="hv-bar" x="94" y="185" width="20" height="25" rx="2" fill="var(--color-main)" opacity="0.4" style="animation-delay:.3s"/>
+          <rect class="hv-bar" x="124" y="130" width="20" height="80" rx="2" fill="var(--color-accent)" style="animation-delay:.45s"/>
+
+          <!-- AI Fluency: pulsing connection flow -->
+          <path class="hv-flow-path" d="M190 80 Q 230 60 260 90 T 292 132" fill="none" stroke="var(--color-main)" stroke-width="2" stroke-dasharray="6 6"/>
+          <circle cx="190" cy="80" r="6" fill="var(--color-main)"/>
+          <circle cx="260" cy="90" r="6" fill="var(--color-main)"/>
+          <circle cx="292" cy="132" r="6" fill="var(--color-accent)"/>
+        </svg>
       </div>
     </section>
 
@@ -142,5 +166,28 @@
     </div>
   </footer>
 
+  <script>
+    (function () {
+      var hero = document.querySelector('.hero');
+      var visual = document.getElementById('heroVisual');
+      if (!hero || !visual) return;
+
+      var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reduceMotion) return;
+
+      hero.addEventListener('mousemove', function (e) {
+        var rect = hero.getBoundingClientRect();
+        var relX = (e.clientX - rect.left) / rect.width - 0.5;
+        var relY = (e.clientY - rect.top) / rect.height - 0.5;
+        var rotateY = relX * 12;
+        var rotateX = relY * -12;
+        visual.style.transform = 'rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg)';
+      });
+
+      hero.addEventListener('mouseleave', function () {
+        visual.style.transform = 'rotateX(0deg) rotateY(0deg)';
+      });
+    })();
+  </script>
 </body>
 </html>
