@@ -742,6 +742,55 @@ p {
   opacity: 0.35;
 }
 
+.hn-divider {
+  stroke: var(--color-divider);
+  stroke-width: 1.5;
+}
+
+.hn-text-line {
+  stroke: var(--color-main);
+  stroke-linecap: round;
+  opacity: 0.35;
+}
+
+.hn-row circle {
+  fill: var(--color-accent);
+}
+
+.hn-row line {
+  stroke: var(--color-main);
+  stroke-width: 2;
+  stroke-linecap: round;
+  opacity: 0.3;
+}
+
+.hn-graph-area {
+  fill: var(--color-main);
+  opacity: 0.08;
+}
+
+.hn-graph-line {
+  fill: none;
+  stroke: var(--color-main);
+  stroke-width: 1.6;
+  opacity: 0.6;
+}
+
+.hn-graph-dot {
+  fill: var(--color-main);
+  opacity: 0.6;
+}
+
+.hn-graph-dot-last {
+  fill: var(--color-accent);
+  opacity: 1;
+}
+
+.hn-graph-baseline {
+  stroke: var(--color-divider);
+  stroke-width: 1;
+}
+
 .hero-tag {
   position: absolute;
   font-family: var(--font-mono);
@@ -792,6 +841,7 @@ p {
   font-style: italic;
   color: var(--color-text);
   font-size: 1.05rem;
+  max-width: none;
   margin: var(--space-1) 0 0;
 }
 
