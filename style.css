@@ -881,6 +881,12 @@ p {
   .tag-bl { transition-delay: 0.3s; }
   .tag-br { transition-delay: 0.4s; }
 
+  .hn-graph {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    transition-delay: 0.35s;
+  }
+
   .hero-card-wrap:hover {
     background: radial-gradient(circle at 50% 40%, rgba(31, 78, 77, 0.16), rgba(201, 162, 39, 0.05) 70%);
   }
@@ -896,6 +902,10 @@ p {
 
   .hero-card-wrap:hover .hn-line {
     stroke-dashoffset: 0;
+  }
+
+  .hero-card-wrap:hover .hn-graph {
+    opacity: 1;
   }
 
   .hero-card-wrap:hover .hero-tag {
