@@ -728,11 +728,11 @@ p {
 /* Default state: fully visible. This is the safe fallback for
    touch devices, which have no hover state to trigger a reveal. */
 .hn-node {
-  fill: var(--color-main);
+  fill: url(#nodeGradient);
 }
 
 .hn-center {
-  fill: var(--color-accent);
+  fill: url(#centerGradient);
 }
 
 .hn-line {
