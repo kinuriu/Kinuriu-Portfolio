@@ -577,13 +577,6 @@ p {
   text-align: left;
 }
 
-.hero.hero-split {
-  display: grid;
-  grid-template-columns: 1.15fr 1fr;
-  gap: var(--space-4);
-  align-items: center;
-}
-
 .hero .kicker {
   margin-bottom: var(--space-2);
 }
@@ -673,8 +666,8 @@ p {
 
 .hero-card-wrap {
   position: relative;
-  margin: 0 auto;
-  max-width: 340px;
+  margin: var(--space-3) auto 0;
+  max-width: 100%;
   padding: 28px;
   border-radius: 24px;
   background: radial-gradient(circle at 50% 40%, rgba(31, 78, 77, 0.08), rgba(31, 78, 77, 0.02) 70%);
@@ -707,6 +700,10 @@ p {
 .chrome-dot:nth-child(2) { background: var(--color-accent); }
 .chrome-dot:nth-child(3) { background: var(--color-main); }
 
+.hero-network-frame {
+  position: relative;
+}
+
 .hero-network {
   display: block;
   width: 100%;
@@ -714,6 +711,15 @@ p {
   padding: 8px 0 16px;
   transform-origin: center;
   transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.hero-card-shade {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at 50% 50%, rgba(31, 78, 77, 0.35), rgba(31, 78, 77, 0.85) 100%);
+  transition: opacity 0.5s ease;
 }
 
 /* Default state: fully visible. This is the safe fallback for
@@ -777,32 +783,23 @@ p {
   color: var(--color-bg);
 }
 
-.hero-card-hint {
-  display: none;
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  color: #8A8478;
-  text-align: center;
-  margin-top: var(--space-2);
-}
-
-.hero-card-caption {
+.hero .hero-card-caption {
   font-family: var(--font-heading);
   font-style: italic;
   color: var(--color-text);
   font-size: 1.05rem;
-  max-width: 32ch;
+  max-width: 40ch;
   margin: var(--space-3) auto 0;
   text-align: center;
 }
 
 /* Collapse-then-reveal-on-hover only applies where hover is a real,
    precise pointer interaction. Touch devices never get a collapsed
-   state (network, tags all stay visible by default above), since
-   they'd have no way to trigger the reveal at all. */
+   state (network, tags, shade all stay in their revealed/hidden
+   resting state above), since they'd have no way to trigger a hover. */
 @media (hover: hover) and (pointer: fine) {
-  .hero-card-hint {
-    display: block;
+  .hero-card-shade {
+    opacity: 1;
   }
 
   .hn-node {
@@ -853,14 +850,9 @@ p {
     opacity: 1;
     transform: translateY(0) scale(1);
   }
-}
 
-@media (max-width: 900px) {
-  .hero.hero-split {
-    grid-template-columns: 1fr;
-  }
-  .hero-card-outer {
-    margin-top: var(--space-4);
+  .hero-card-wrap:hover .hero-card-shade {
+    opacity: 0;
   }
 }
 
